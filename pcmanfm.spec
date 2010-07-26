@@ -4,7 +4,7 @@
 Summary:	PCMan File Manager
 Name:		pcmanfm
 Version:	0.9.7
-Release:	%mkrel -c %prerel 2
+Release:	%mkrel -c %prerel 3
 URL:		http://pcmanfm.sourceforge.net/
 Source0:	%{name}-%{version}-%git.tar.gz
 License:	GPLv2+
@@ -16,6 +16,7 @@ BuildRequires:	libfm-devel >= 0.1.12
 Requires:	shared-mime-info
 Requires:	gnome-icon-theme
 Suggests:	gvfs
+Conflicts:	lxde-common < 0.5.5
 
 %description
 PCMan File Manager is an extremely fast and lightweight file manager which
