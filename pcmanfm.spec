@@ -1,18 +1,16 @@
-%define prerel rc1
-%define git git20110722
-
 Summary:	PCMan File Manager
 Name:		pcmanfm
-Version:	0.9.7
-Release:	%mkrel -c %prerel 3
+Version:	0.9.8
+Release:	%mkrel 1
 URL:		http://pcmanfm.sourceforge.net/
-Source0:	%{name}-%{version}-%git.tar.gz
+Source0:	%{name}-%{version}.tar.gz
+Patch0:		pcmanfm-0.9.8-mdv-default-config.patch
 License:	GPLv2+
 Group:		File tools
 BuildRoot:	%{_tmppath}/%{name}-%{version}-buildroot
 BuildRequires:	gtk+2-devel pkgconfig
 BuildRequires:	intltool desktop-file-utils
-BuildRequires:	libfm-devel >= 0.1.12
+BuildRequires:	libfm-devel >= 0.1.14
 Requires:	shared-mime-info
 Requires:	gnome-icon-theme
 Suggests:	gvfs
@@ -24,9 +22,9 @@ features tabbed browsing and user-friendly interface.
 
 %prep
 %setup -q
+%patch0 -p0
 
 %build
-./autogen.sh
 %configure2_5x --disable-static
 %make
 
@@ -39,19 +37,9 @@ rm -rf %{buildroot}
 
 # clean .desktop file
 desktop-file-install --vendor="" \
-  --remove-category="Application" \
   --add-category="System;FileTools" \
   --remove-mime-type="x-directory/normal" \
   --dir %{buildroot}%{_datadir}/applications %{buildroot}%{_datadir}/applications/%{name}.desktop
-
-#install default .conf file
-mkdir -p %{buildroot}%{_sysconfdir}/xdg/pcmanfm
-
-cat > %{buildroot}%{_sysconfdir}/xdg/pcmanfm/pcmanfm.conf << EOF
-[desktop]
-wallpaper_mode=1
-wallpaper=/usr/share/mdk/backgrounds/default.jpg
-EOF
 
 %clean
 rm -rf %{buildroot}
@@ -60,6 +48,6 @@ rm -rf %{buildroot}
 %defattr(-,root,root,0755)
 %doc AUTHORS ChangeLog NEWS README
 %{_bindir}/%{name}
-%{_sysconfdir}/xdg/%{name}/%{name}.conf
+%{_sysconfdir}/xdg/%{name}/default/pcmanfm.conf
 %{_datadir}/applications/%{name}.desktop
 %{_datadir}/%{name}
