@@ -1,10 +1,13 @@
 Summary:	PCMan File Manager
 Name:		pcmanfm
 Version:	0.9.8
-Release:	%mkrel 1
+Release:	%mkrel 2
 URL:		http://pcmanfm.sourceforge.net/
 Source0:	%{name}-%{version}.tar.gz
 Patch0:		pcmanfm-0.9.8-mdv-default-config.patch
+# (ahmad) add upstream patch to  fix some IPC issues; this should fix pcmanfm
+# not opening except one instance
+Patch1:		pcmanfm-IPC-fixes.patch
 License:	GPLv2+
 Group:		File tools
 BuildRoot:	%{_tmppath}/%{name}-%{version}-buildroot
@@ -23,6 +26,7 @@ features tabbed browsing and user-friendly interface.
 %prep
 %setup -q
 %patch0 -p0
+%patch1 -p1 -b .IPC
 
 %build
 %configure2_5x --disable-static
