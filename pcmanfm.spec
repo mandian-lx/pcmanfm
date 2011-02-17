@@ -1,21 +1,29 @@
+%define git 1
+%define prerel 6240436
+%define ver 0.9.9
+
 Summary:	PCMan File Manager
 Name:		pcmanfm
-Version:	0.9.8
 Release:	%mkrel 2
 URL:		http://pcmanfm.sourceforge.net/
+
+%if %git
+Version:	%{ver}.git%{prerel}
+Source0:	%{name}-%{prerel}.tar.gz
+%else
+Version:	%{ver}
 Source0:	%{name}-%{version}.tar.gz
+%endif
 Patch0:		pcmanfm-0.9.8-mdv-default-config.patch
-# (ahmad) add upstream patch to  fix some IPC issues; this should fix pcmanfm
-# not opening except one instance
-Patch1:		pcmanfm-IPC-fixes.patch
+Patch1:		pcmanfm_multi.patch
 License:	GPLv2+
 Group:		File tools
 BuildRoot:	%{_tmppath}/%{name}-%{version}-buildroot
 BuildRequires:	gtk+2-devel pkgconfig
 BuildRequires:	intltool desktop-file-utils
-BuildRequires:	libfm-devel >= 0.1.14
-Requires:	shared-mime-info
-Requires:	gnome-icon-theme
+BuildRequires:	libfm-devel >= 0.1.15
+Requires:	shared-mime-info gksu
+Requires:	gnome-icon-theme xinitrc_dbus
 Suggests:	gvfs
 Conflicts:	lxde-common < 0.5.5
 
@@ -24,11 +32,19 @@ PCMan File Manager is an extremely fast and lightweight file manager which
 features tabbed browsing and user-friendly interface.
 
 %prep
-%setup -q
-%patch0 -p0
-%patch1 -p1 -b .IPC
+%if %git
+%setup -q -n %{name}-%{prerel}
+%else
+%setup -q -n %{name}
+%endif
+
+#rm src/single-inst.c
+#rm src/single-inst.h
+%patch0 -p1
+%patch1 -p1
 
 %build
+./autogen.sh
 %configure2_5x --disable-static
 %make
 
@@ -41,6 +57,7 @@ rm -rf %{buildroot}
 
 # clean .desktop file
 desktop-file-install --vendor="" \
+  --remove-category="Application" \
   --add-category="System;FileTools" \
   --remove-mime-type="x-directory/normal" \
   --dir %{buildroot}%{_datadir}/applications %{buildroot}%{_datadir}/applications/%{name}.desktop
