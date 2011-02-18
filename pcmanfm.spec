@@ -1,10 +1,10 @@
 %define git 1
-%define prerel 6240436
+%define prerel 43fdda4
 %define ver 0.9.9
 
 Summary:	PCMan File Manager
 Name:		pcmanfm
-Release:	%mkrel 2
+Release:	%mkrel 1
 URL:		http://pcmanfm.sourceforge.net/
 
 %if %git
@@ -15,7 +15,7 @@ Version:	%{ver}
 Source0:	%{name}-%{version}.tar.gz
 %endif
 Patch0:		pcmanfm-0.9.8-mdv-default-config.patch
-Patch1:		pcmanfm_multi.patch
+#Patch1:		pcmanfm_multi.patch
 License:	GPLv2+
 Group:		File tools
 BuildRoot:	%{_tmppath}/%{name}-%{version}-buildroot
@@ -25,7 +25,7 @@ BuildRequires:	libfm-devel >= 0.1.15
 Requires:	shared-mime-info gksu
 Requires:	gnome-icon-theme xinitrc_dbus
 Suggests:	gvfs
-Conflicts:	lxde-common < 0.5.5
+Conflicts:	lxde-common < 0.5.0
 
 %description
 PCMan File Manager is an extremely fast and lightweight file manager which
@@ -41,7 +41,7 @@ features tabbed browsing and user-friendly interface.
 #rm src/single-inst.c
 #rm src/single-inst.h
 %patch0 -p1
-%patch1 -p1
+#patch1 -p1
 
 %build
 ./autogen.sh
