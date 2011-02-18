@@ -1,6 +1,7 @@
 %define git 1
 %define prerel 43fdda4
 %define ver 0.9.9
+%define gitday 20111902
 
 Summary:	PCMan File Manager
 Name:		pcmanfm
@@ -8,7 +9,7 @@ Release:	%mkrel 1
 URL:		http://pcmanfm.sourceforge.net/
 
 %if %git
-Version:	%{ver}.git%{prerel}
+Version:	%{ver}.git%{gitday}
 Source0:	%{name}-%{prerel}.tar.gz
 %else
 Version:	%{ver}
@@ -21,7 +22,11 @@ Group:		File tools
 BuildRoot:	%{_tmppath}/%{name}-%{version}-buildroot
 BuildRequires:	gtk+2-devel pkgconfig
 BuildRequires:	intltool desktop-file-utils
+%if %git
+BuildRequires:	libfm-devel = 0.1.15.git%{gitday}
+%else
 BuildRequires:	libfm-devel >= 0.1.15
+%endif
 Requires:	shared-mime-info gksu
 Requires:	gnome-icon-theme xinitrc_dbus
 Suggests:	gvfs
