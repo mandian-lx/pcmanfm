@@ -1,11 +1,11 @@
 %define git 1
-%define prerel 882a932
+%define prerel 029e752
 %define ver 0.9.9
-%define gitday 20111904
+%define gitday 20111905
 
 Summary:	PCMan File Manager
 Name:		pcmanfm
-Release:	%mkrel 4
+Release:	%mkrel 1
 URL:		http://pcmanfm.sourceforge.net/
 
 %if %git
