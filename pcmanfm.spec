@@ -1,7 +1,7 @@
 %define git 1
-%define prerel 029e752
+%define prerel f914287
 %define ver 0.9.9
-%define gitday 20111905
+%define gitday 20111906
 
 Summary:	PCMan File Manager
 Name:		pcmanfm
@@ -16,7 +16,6 @@ Version:	%{ver}
 Source0:	%{name}-%{version}.tar.gz
 %endif
 Patch0:		pcmanfm-0.9.8-mdv-default-config.patch
-Patch1:		pcmanfm-0.9.9-selections.patch
 License:	GPLv2+
 Group:		File tools
 BuildRoot:	%{_tmppath}/%{name}-%{version}-buildroot
@@ -46,7 +45,6 @@ features tabbed browsing and user-friendly interface.
 #rm src/single-inst.c
 #rm src/single-inst.h
 %patch0 -p1
-%patch1 -p1
 
 %build
 ./autogen.sh
