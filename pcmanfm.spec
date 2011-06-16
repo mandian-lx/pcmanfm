@@ -1,7 +1,7 @@
 %define git 1
-%define prerel f914287
+%define prerel 9c75c5d
 %define ver 0.9.9
-%define gitday 20111906
+%define gitday 20112006
 
 Summary:	PCMan File Manager
 Name:		pcmanfm
