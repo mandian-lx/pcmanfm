@@ -5,7 +5,7 @@
 
 Summary:	PCMan File Manager
 Name:		pcmanfm
-Release:	%mkrel 1
+Release:	%mkrel 2
 URL:		http://pcmanfm.sourceforge.net/
 
 %if %git
@@ -16,6 +16,7 @@ Version:	%{ver}
 Source0:	%{name}-%{version}.tar.gz
 %endif
 Patch0:		pcmanfm-0.9.8-mdv-default-config.patch
+Patch1:		pcmanfm-0.9.9-fix_non_void.patch
 License:	GPLv2+
 Group:		File tools
 BuildRoot:	%{_tmppath}/%{name}-%{version}-buildroot
@@ -45,6 +46,7 @@ features tabbed browsing and user-friendly interface.
 #rm src/single-inst.c
 #rm src/single-inst.h
 %patch0 -p1
+%patch1 -p1
 
 %build
 ./autogen.sh
