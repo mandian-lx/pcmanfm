@@ -23,6 +23,7 @@ BuildRoot:	%{_tmppath}/%{name}-%{version}-buildroot
 BuildRequires:	gtk+2-devel pkgconfig
 BuildRequires:	intltool desktop-file-utils
 BuildRequires:	libfm-devel >= 0.1.16
+BuildRequires:	automake
 Requires:	shared-mime-info gksu
 Requires:	gnome-icon-theme xinitrc_dbus
 Suggests:	gvfs
