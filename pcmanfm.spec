@@ -23,6 +23,7 @@ Patch3:		pcmanfm2-opencwd.patch
 Patch4:		pcmanfm2-alt-fix-rmb-selection.patch
 Patch5:		pcmanfm2-temp-close-unmount-fix.patch
 Patch6:		pcmanfm2-delete-win-on-close.patch
+Patch7:		pcmanfm-0.9.10-automake1.12.patch
 
 License:	GPLv2+
 Group:		File tools
@@ -53,6 +54,7 @@ features tabbed browsing and user-friendly interface.
 %endif
 
 %patch0 -p1
+%patch7 -p1
 
 %build
 ./autogen.sh
