@@ -5,7 +5,7 @@
 
 Summary:	PCMan File Manager
 Name:		pcmanfm
-Release:	2
+Release:	3
 URL:		http://pcmanfm.sourceforge.net/
 
 %if %{git}
@@ -25,6 +25,7 @@ Patch5:		pcmanfm2-delete-win-on-close.patch
 Patch6:		pcmanfm-0.9.10-automake1.12.patch
 Patch7:		pcmanfm-0.9.10-linkage.patch
 Patch8:		pcmanfm-0.9.10-nav_get_history.patch
+Patch9:		pcmanfm-0.9.10-rightclick.patch
 
 License:	GPLv2+
 Group:		File tools
