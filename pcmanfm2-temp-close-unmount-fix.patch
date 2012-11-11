@@ -1,0 +1,15 @@
+diff --git a/pcmanfm2/src/tab-page.c b/pcmanfm2/src/tab-page.c
+index e8cf39c..4b7ccf9 100644
+--- a/src/tab-page.c
++++ b/src/tab-page.c
+@@ -338,8 +338,8 @@ static void fm_tab_page_chdir_without_history(FmTabPage* page, FmPath* path)
+     fm_side_pane_chdir(FM_SIDE_PANE(page->side_pane), path);
+ 
+     /* destroy the page when the folder is unmounted or deleted. */
+-    g_signal_connect_swapped(folder, "unmount", G_CALLBACK(gtk_widget_destroy), page);
+-    g_signal_connect_swapped(folder, "removed", G_CALLBACK(gtk_widget_destroy), page);
++//    g_signal_connect_swapped(folder, "unmount", G_CALLBACK(gtk_widget_destroy), page);
++//    g_signal_connect_swapped(folder, "removed", G_CALLBACK(gtk_widget_destroy), page);
+ 
+     g_signal_connect(folder, "content-changed", G_CALLBACK(on_folder_content_changed), page);
+     g_signal_connect(folder, "fs-info", G_CALLBACK(on_folder_fs_info), page);

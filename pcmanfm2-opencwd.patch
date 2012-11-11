@@ -1,0 +1,24 @@
+diff --git a/pcmanfm2/src/pcmanfm.c b/pcmanfm2/src/pcmanfm.c
+index 3ad3b96..de3e99c 100644
+--- a/src/pcmanfm.c
++++ b/src/pcmanfm.c
+@@ -379,8 +379,8 @@ gboolean pcmanfm_run()
+         }
+         else
+         {
+-            if(!daemon_mode)
+-            {
++//            if(!daemon_mode)
++//            {
+                 FmPath* path;
+                 char* cwd = ipc_cwd ? ipc_cwd : g_get_current_dir();
+                 path = fm_path_new_for_path(cwd);
+@@ -388,7 +388,7 @@ gboolean pcmanfm_run()
+                 fm_path_unref(path);
+                 g_free(cwd);
+                 ipc_cwd = NULL;
+-            }
++//            }
+         }
+     }
+     return ret;
