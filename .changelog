@@ -1,0 +1,7 @@
+- new version 0.9.10
+- fix resize windows bug
+- fix close pcmanfm windows after unmount (thanks ALT)
+- fix transparancy error (thanks ALT)
+- fix rmb behaviour (thanks ALT)
+- fix SIGSEGV crash from nav_history_cur
+- fix rightclick crash

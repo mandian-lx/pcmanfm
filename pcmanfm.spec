@@ -1,46 +1,43 @@
 %define git 0
 %define prerel 19e957a
-%define ver 0.9.10
+%define ver 1.0.1
 %define gitday 20112007
 
 Summary:	PCMan File Manager
 Name:		pcmanfm
-Release:	3
+Release:	1
 URL:		http://pcmanfm.sourceforge.net/
 
-%if %{git}
+%if %git
 Version:	%{ver}.git%{gitday}
 Source0:	%{name}-%{prerel}.tar.gz
 %else
 Version:	%{ver}
-Source0:	%{name}-%{version}.tar.gz
+Source0:	http://dfn.dl.sourceforge.net/sourceforge/pcmanfm/%{name}-%{version}.tar.gz
 %endif
-Patch0:		pcmanfm-0.9.8-mdv-default-config.patch
-Patch1:		pcmanfm-0.9.10-win-resize.patch
+Patch0:		pcmanfm-0.9.8-mdv-default-config.patch        
+
 #Patches from ALT Linux
-Patch2:		pcmanfm2-alt-fix-pseudotransparency.patch
-Patch3:		pcmanfm2-opencwd.patch
-Patch4:		pcmanfm2-temp-close-unmount-fix.patch
-Patch5:		pcmanfm2-delete-win-on-close.patch
-Patch6:		pcmanfm-0.9.10-automake1.12.patch
-Patch7:		pcmanfm-0.9.10-linkage.patch
-Patch8:		pcmanfm-0.9.10-nav_get_history.patch
-Patch9:		pcmanfm-0.9.10-rightclick.patch
+#Patch2:		pcmanfm2-alt-fix-pseudotransparency.patch
+#Patch3:		pcmanfm2-opencwd.patch
+#Patch4:		pcmanfm2-temp-close-unmount-fix.patch
+#Patch5:		pcmanfm2-delete-win-on-close.patch
+
+#Patch6:		pcmanfm-0.9.10-nav_get_history.patch
+#Patch7:		pcmanfm-0.9.10-rightclick.patch
 
 License:	GPLv2+
 Group:		File tools
-BuildRequires:	gtk+2-devel
-BuildRequires:	intltool
-BuildRequires:	desktop-file-utils
-%if %{git}
+BuildRoot:	%{_tmppath}/%{name}-%{version}-buildroot
+BuildRequires:	pkgconfig(gtk+-2.0)
+BuildRequires:	intltool desktop-file-utils
+%if %git
 BuildRequires:	libfm-devel = 0.1.15.git%{gitday}
 %else
-BuildRequires:	libfm-devel >= 0.1.17
+BuildRequires:	libfm-devel = %{version}
 %endif
-Requires:	shared-mime-info
-Requires:	gksu
+Requires:	shared-mime-info gksu
 Requires:	gnome-icon-theme
-Requires:	xinitrc_dbus
 Suggests:	gvfs
 Conflicts:	lxde-common < 0.5.0
 
@@ -49,7 +46,7 @@ PCMan File Manager is an extremely fast and lightweight file manager which
 features tabbed browsing and user-friendly interface.
 
 %prep
-%if %{git}
+%if %git
 %setup -q -n %{name}-%{prerel}
 %else
 %setup -q
@@ -58,7 +55,7 @@ features tabbed browsing and user-friendly interface.
 %apply_patches
 
 %build
-./autogen.sh
+#./autogen.sh
 %configure2_5x --disable-static
 %make
 
@@ -86,4 +83,11 @@ rm -rf %{buildroot}
 %{_sysconfdir}/xdg/%{name}/default/pcmanfm.conf
 %{_datadir}/applications/%{name}.desktop
 %{_datadir}/%{name}
+%{_datadir}/applications/%{name}-desktop-pref.desktop
+%{_datadir}/man/man1/pcmanfm.1.xz
+
+
+%changelog
+* Tue May 31 2012 akdengi <akdengi> 0.9.10-3
+- fix rightclick folder crash
 
