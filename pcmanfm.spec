@@ -1,11 +1,11 @@
 %define git 0
 %define prerel 19e957a
-%define ver 1.0.1
+%define ver 1.1.0
 %define gitday 20112007
 
 Summary:	PCMan File Manager
 Name:		pcmanfm
-Release:	1
+Release:	3
 URL:		http://pcmanfm.sourceforge.net/
 
 %if %git
@@ -32,9 +32,9 @@ BuildRoot:	%{_tmppath}/%{name}-%{version}-buildroot
 BuildRequires:	pkgconfig(gtk+-2.0)
 BuildRequires:	intltool desktop-file-utils
 %if %git
-BuildRequires:	libfm-devel = 0.1.15.git%{gitday}
+BuildRequires:	pkgconfig(libfm) = 0.1.15.git%{gitday}
 %else
-BuildRequires:	libfm-devel = %{version}
+BuildRequires:	pkgconfig(libfm) = %{version}
 %endif
 Requires:	shared-mime-info gksu
 Requires:	gnome-icon-theme
@@ -56,7 +56,7 @@ features tabbed browsing and user-friendly interface.
 
 %build
 #./autogen.sh
-%configure2_5x --disable-static
+%configure2_5x --disable-static --with-gtk=2
 %make
 
 %install
