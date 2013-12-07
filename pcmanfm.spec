@@ -5,7 +5,7 @@
 
 Summary:	PCMan File Manager
 Name:		pcmanfm
-Release:	4
+Release:	5
 License:	GPLv2+
 Group:		File tools
 Url:		http://pcmanfm.sourceforge.net/
