@@ -5,7 +5,7 @@
 
 Summary:	PCMan File Manager
 Name:		pcmanfm
-Release:	3
+Release:	4
 URL:		http://pcmanfm.sourceforge.net/
 
 %if %git
