@@ -1,3 +1,5 @@
+%define _disable_ld_no_undefined 1
+
 Summary:	PCMan File Manager
 Name:		pcmanfm
 Version:	1.2.0
@@ -32,7 +34,7 @@ features tabbed browsing and user-friendly interface.
 %apply_patches
 
 %build
-%configure2_5x
+%configure
 %make
 
 %install
