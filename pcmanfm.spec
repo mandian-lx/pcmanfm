@@ -38,6 +38,12 @@ features tabbed browsing and user-friendly interface.
 export CC=gcc
 export CXX=g+
 
+CFLAGS="-02 -fno-strict-aliasing"
+CXXFLAGS="-O2 -fno-strict-aliasing"
+
+export CFLAGS
+export CXXFLAGS
+
 %configure
 %make
 
