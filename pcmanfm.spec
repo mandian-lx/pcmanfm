@@ -38,8 +38,8 @@ features tabbed browsing and user-friendly interface.
 export CC=gcc
 export CXX=g+
 
-CFLAGS=-Oz -Wa,--compress-debug-sections -gdwarf-4 -Wstrict-aliasing=3 -pipe -Wformat -Werror=format-security -Wp,-D_FORTIFY_SOURCE=2 -fstack-protector --param=ssp-buffer-size=4  -fPIC
-CXXFLAGS=-Oz -Wa,--compress-debug-sections -gdwarf-4 -Wstrict-aliasing=3 -pipe -Wformat -Werror=format-security -Wp,-D_FORTIFY_SOURCE=2 -fstack-protector --param=ssp-buffer-size=4  -fPIC
+CFLAGS='-Oz -Wa,--compress-debug-sections -gdwarf-4 -Wstrict-aliasing=3 -pipe -Wformat -Werror=format-security -Wp,-D_FORTIFY_SOURCE=2 -fstack-protector --param=ssp-buffer-size=4  -fPIC'
+CXXFLAGS='-Oz -Wa,--compress-debug-sections -gdwarf-4 -Wstrict-aliasing=3 -pipe -Wformat -Werror=format-security -Wp,-D_FORTIFY_SOURCE=2 -fstack-protector --param=ssp-buffer-size=4  -fPIC'
 
 
 %configure
