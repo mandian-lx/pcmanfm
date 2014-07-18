@@ -1,2 +1,4 @@
-sources:
+removed_sources:
   pcmanfm-1.2.0.tar.xz: d2a72a25d1f5a9fd6a245bfe5a8723969fa27e9a
+sources:
+  pcmanfm-1.2.1.tar.xz: 6b0c981224897a621a52919d48f2ff13029f1552
