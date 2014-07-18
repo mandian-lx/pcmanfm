@@ -34,6 +34,10 @@ features tabbed browsing and user-friendly interface.
 %apply_patches
 
 %build
+#clang compile error
+export CC=gcc
+export CXX=g+
+
 %configure
 %make
 
