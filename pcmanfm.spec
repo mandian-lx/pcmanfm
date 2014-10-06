@@ -21,7 +21,7 @@ BuildRequires:	pkgconfig(pango) >= 1.20.0
 BuildRequires:	pkgconfig(x11)
 Requires:	shared-mime-info
 Requires:	gnome-icon-theme
-Requires:	gksu-polkit
+Requires:	gksu
 Suggests:	gvfs
 Conflicts:	lxde-common < 0.5.5
 
