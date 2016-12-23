@@ -2,20 +2,20 @@
 
 Summary:	PCMan File Manager
 Name:		pcmanfm
-Version:	1.2.1
-Release:	5
+Version:	1.2.5
+Release:	1
 License:	GPLv2+
 Group:		File tools
 Url:		http://pcmanfm.sourceforge.net/
 Source0:	http://downloads.sourceforge.net/pcmanfm/%{name}-%{version}.tar.xz
-Patch0:		pcmanfm-0.9.8-mdv-default-config.patch        
+Patch0:		pcmanfm-0.9.8-mdv-default-config.patch
 BuildRequires:	desktop-file-utils
 BuildRequires:	intltool
 BuildRequires:	pkgconfig(gio-unix-2.0) >= 2.18.0
 BuildRequires:	pkgconfig(glib-2.0)
 BuildRequires:	pkgconfig(gthread-2.0)
 BuildRequires:	pkgconfig(gtk+-2.0)
-BuildRequires:	pkgconfig(libfm) >= 1.0.1
+BuildRequires:	pkgconfig(libfm) >= 1.2.5
 BuildRequires:	pkgconfig(libfm-gtk) >= 1.0.1
 BuildRequires:	pkgconfig(pango) >= 1.20.0
 BuildRequires:	pkgconfig(x11)
@@ -34,14 +34,6 @@ features tabbed browsing and user-friendly interface.
 %apply_patches
 
 %build
-#clang compile error
-export CC=gcc
-export CXX=g+
-
-CFLAGS='-Oz -Wa,--compress-debug-sections -gdwarf-4 -Wstrict-aliasing=3 -pipe -Wformat -Werror=format-security -Wp,-D_FORTIFY_SOURCE=2 -fstack-protector --param=ssp-buffer-size=4  -fPIC'
-CXXFLAGS='-Oz -Wa,--compress-debug-sections -gdwarf-4 -Wstrict-aliasing=3 -pipe -Wformat -Werror=format-security -Wp,-D_FORTIFY_SOURCE=2 -fstack-protector --param=ssp-buffer-size=4  -fPIC'
-
-
 %configure
 %make
 
