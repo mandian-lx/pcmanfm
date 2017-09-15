@@ -55,15 +55,16 @@ features tabbed browsing and user-friendly interface.
 %apply_patches
 
 %build
-%configure
+%configure \
+	--enable-cast-checks \
+	--with-gtk=3 \
+	%{nil}
 %make
 
 %install
 %makeinstall_std
 
 rm -r %{buildroot}%{_includedir}
-
-%find_lang %{name}
 
 # clean .desktop file
 desktop-file-install \
@@ -73,4 +74,7 @@ desktop-file-install \
 	--remove-mime-type="x-directory/normal" \
 	--dir %{buildroot}%{_datadir}/applications \
 	%{buildroot}%{_datadir}/applications/%{name}.desktop
+
+# locales
+%find_lang %{name}
 
